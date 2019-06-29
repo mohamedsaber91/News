@@ -1,29 +1,46 @@
 package com.example.justnews.APIS.Model;
 
-import com.google.gson.annotations.SerializedName;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+@Entity
 public class SourcesItem{
 
+	@ColumnInfo
 	@SerializedName("country")
 	private String country;
 
+	@ColumnInfo
 	@SerializedName("name")
 	private String name;
 
+	@ColumnInfo
 	@SerializedName("description")
 	private String description;
 
+	@ColumnInfo
 	@SerializedName("language")
 	private String language;
 
+	@PrimaryKey
+	@ColumnInfo
+	@NonNull
 	@SerializedName("id")
 	private String id;
 
+	@ColumnInfo
 	@SerializedName("category")
 	private String category;
 
+	@ColumnInfo
 	@SerializedName("url")
 	private String url;
+
+	public SourcesItem() {
+	}
 
 	public void setCountry(String country){
 		this.country = country;

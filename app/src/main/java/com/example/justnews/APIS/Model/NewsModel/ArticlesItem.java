@@ -1,33 +1,73 @@
 package com.example.justnews.APIS.Model.NewsModel;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.example.justnews.APIS.Model.SourcesItem;
 import com.google.gson.annotations.SerializedName;
-
+@Entity(foreignKeys = @ForeignKey(entity = SourcesItem.class,
+                                    parentColumns = "id", childColumns = "sourceId"))
 public class ArticlesItem{
 
+	@ColumnInfo
 	@SerializedName("publishedAt")
 	private String publishedAt;
 
+	@ColumnInfo
 	@SerializedName("author")
 	private String author;
 
+	@ColumnInfo
 	@SerializedName("urlToImage")
 	private String urlToImage;
 
+	@ColumnInfo
 	@SerializedName("description")
 	private String description;
 
+	@Ignore
 	@SerializedName("source")
 	private SourcesItem source;
 
+	private String sourceId;
+	private String sourceName;
+
+	@ColumnInfo
 	@SerializedName("title")
 	private String title;
 
+	@PrimaryKey
+	@ColumnInfo
+	@NonNull
 	@SerializedName("url")
 	private String url;
 
+	@ColumnInfo
 	@SerializedName("content")
 	private String content;
+
+	public ArticlesItem() {
+	}
+
+	public String getSourceId() {
+		return sourceId;
+	}
+
+	public void setSourceId(String sourceId) {
+		this.sourceId = sourceId;
+	}
+
+	public String getSourceName() {
+		return sourceName;
+	}
+
+	public void setSourceName(String sourceName) {
+		this.sourceName = sourceName;
+	}
 
 	public void setPublishedAt(String publishedAt){
 		this.publishedAt = publishedAt;

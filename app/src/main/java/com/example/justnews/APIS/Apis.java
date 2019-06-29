@@ -1,6 +1,5 @@
 package com.example.justnews.APIS;
 
-import com.example.justnews.APIS.Model.NewsModel.ArticlesItem;
 import com.example.justnews.APIS.Model.NewsModel.NewsResponse;
 import com.example.justnews.APIS.Model.SourcesResponse;
 

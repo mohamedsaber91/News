@@ -41,9 +41,15 @@ public class HomeNews extends BaseActivity {
     private void getNewsSourcesFromRepositry() {
         newsRepositry.getSourcesnamefromApi(new NewsRepositry.onNewsSourcesPreperedListener() {
             @Override
-            public void onNewsSourcesPrepered(List<SourcesItem> sourcesItems) {
-                hideProgressBar();
-                showSourcesInTablayout(sourcesItems);
+            public void onNewsSourcesPrepered(final List<SourcesItem> sourcesItems) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideProgressBar();
+                        showSourcesInTablayout(sourcesItems);
+                    }
+                });
+
             }
         });
 
@@ -112,13 +118,20 @@ public class HomeNews extends BaseActivity {
                      newsRepositry.getNewsfromApi(source.getId(),newsPreperedListener);
                  }
              });
-             tablayout.getTabAt(1).select();
+             tablayout.getTabAt(0).select();
     }
     NewsRepositry.onNewsPreperedListener newsPreperedListener =
             new NewsRepositry.onNewsPreperedListener() {
                 @Override
-                public void onNewsPrepered(List<ArticlesItem> articlesItems) {
-                    adapter.changeData(articlesItems);
+                public void onNewsPrepered(final List<ArticlesItem> articlesItems) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            hideProgressBar();
+                            adapter.changeData(articlesItems);
+                        }
+                    });
+
                 }
             };
 
