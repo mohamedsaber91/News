@@ -30,7 +30,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getItemAtPosition(position).equals("English")){
                     Toast.makeText(activity, "English", Toast.LENGTH_SHORT).show();
-                    lang ="en";
+                    LanguageDataHolder.currentLanguage = "en";
+                }else if (parent.getItemAtPosition(position).equals("Arabic")){
+                    Toast.makeText(activity, "Arabic", Toast.LENGTH_SHORT).show();
+                    LanguageDataHolder.currentLanguage = "ar";
                 }
             }
 

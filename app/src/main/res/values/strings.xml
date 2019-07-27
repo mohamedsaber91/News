@@ -1,7 +1,7 @@
 <resources>
     <array name="lang">
         <item>English</item>
-        <item>English</item>
+        <item>Arabic</item>
     </array>
     <string name="app_name">Just News</string>
     <string name="choose_news_language">choose news language</string>

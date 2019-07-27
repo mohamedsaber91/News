@@ -14,13 +14,10 @@ import com.example.justnews.Repositry.NewsRepositry;
 
 import java.util.List;
 
-import static com.example.justnews.MainActivity.LANGUAGE;
-
 public class HomeNews extends BaseActivity {
 
     protected TabLayout tablayout;
     protected RecyclerView sourcesRecyclerview;
-    protected String language;
     protected NewsRepositry newsRepositry;
     NewsAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
@@ -31,7 +28,6 @@ public class HomeNews extends BaseActivity {
         super.setContentView(R.layout.activity_homenews);
         initView();
         showProgressBar(R.string.please_wait, R.string.loading);
-        getLanguage();
         getNewsSourcesFromRepositry();
 
     }
@@ -57,15 +53,11 @@ public class HomeNews extends BaseActivity {
 
 
 
-    private void getLanguage() {
-        Intent intent = getIntent();
-        language = intent.getStringExtra(LANGUAGE);
-    }
 
     private void initView() {
         tablayout =  findViewById(R.id.tablayout);
         sourcesRecyclerview =  findViewById(R.id.sources_recyclerview);
-        newsRepositry = new NewsRepositry(language);
+        newsRepositry = new NewsRepositry(LanguageDataHolder.currentLanguage);
         layoutManager = new LinearLayoutManager(activity);
         adapter = new NewsAdapter(null);
         sourcesRecyclerview.setLayoutManager(layoutManager);
